@@ -261,40 +261,40 @@ function checkAdd1(){
 
 function checkAdd2(){
     if(address2.value.length >= 8){
-        add2Error.style = "display: none; left: -176px;", address2.style = "border-color: green; width: 49.4%;"
+        add2Error.style = "display: none; left: -176px;", address2.style = "border-color: green;"
         return true
     } else{
-        add2Error.style = "display: flex; left: -176px;", address2.style = "border-color: red; width: 49.4%;"
+        add2Error.style = "display: flex; left: -176px;", address2.style = "border-color: red;"
         return false
     }
 }
 
 function checkAdd3(){
     if(address3.value.length >= 8){
-        add3Error.style.display = "none", address3.style = "border-color: green; width: 49.4%;"
+        add3Error.style.display = "none", address3.style = "border-color: green;"
         return true
     } else{
-        add3Error.style.display = "flex", address3.style = "border-color: red; width: 49.4%;"
+        add3Error.style.display = "flex", address3.style = "border-color: red;"
         return false
     }
 }
 
 function checkAdd4(){
     if(address4.value.length >= 3){
-        add4Error.style = "display: none; left: -176px;", address4.style = "border-color: green; width: 49.4%;"
+        add4Error.style = "display: none; left: -176px;", address4.style = "border-color: green;"
         return true
     } else{
-        add4Error.style = "display: flex; left: -176px;", address4.style = "border-color: red; width: 49.4%;"
+        add4Error.style = "display: flex; left: -176px;", address4.style = "border-color: red;"
         return false
     }
 }
 
 function checkZip(){
     if(zipcode.value.length == 4){
-        zipError.style = "display: none;", zipcode.style = "border-color: green; width: 49.4%;"
+        zipError.style = "display: none;", zipcode.style = "border-color: green;"
         return true
     } else{
-        zipError.style = "display: flex;", zipcode.style = "border-color: red; width: 49.4%;"
+        zipError.style = "display: flex;", zipcode.style = "border-color: red;"
         return false
     }
 }

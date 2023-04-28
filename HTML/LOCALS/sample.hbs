@@ -15,13 +15,14 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
         <link rel="shortcut icon" href="../CSS/hehe.png">
-        <link rel="stylesheet" href="../CSS/examplesignup.css">
+        <link rel="stylesheet" href="../CSS/sample.css">
     </head>
     <body>
 <!-- MultiStep Form -->
 <div class="container-fluid" id="grad1">
     <div class="row justify-content-center mt-0">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+             <form id="overall" action="/signuppage" method="post" enctype="multipart/form-data">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2><strong>Sign Up Your User Account</strong></h2>
                 <p>Fill all form field to go to next step</p>
@@ -30,103 +31,164 @@
                         <form id="msform">
                             <!-- progressbar -->
                             <ul id="progressbar">
-                                <li class="active" id="account"><strong>Account</strong></li>
+                               <li class="active" id="account"><strong>Account</strong></li>
                                 <li id="personal"><strong>Personal</strong></li>
                                 <li id="payment"><strong>Payment</strong></li>
                                 <li id="confirm"><strong>Finish</strong></li>
                             </ul>
                             <!-- fieldsets -->
                             <fieldset>
+                                <div class="form" id="form1">
                                 <div class="form-card">
-                                    <h2 class="fs-title">Account Information</h2>
-                                    <input type="email" name="email" placeholder="Email Id"/>
-                                    <input type="text" name="uname" placeholder="UserName"/>
-                                    <input type="password" name="pwd" placeholder="Password"/>
-                                    <input type="password" name="cpwd" placeholder="Confirm Password"/>
+                                    <div class="form-usertype">
+                                        <select name="user" id ="user" class="user" value="{{data1.user}}" oninput="checkUser()">
+                                            <option selected disabled hidden>Choose User Type</option>
+                                            <option value="Client">Client</option>
+                                            <option value="Employee">Employee</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-jobtype">
+                                        <select name="job" id ="job" class="job" value="{{data1.job}}" oninput="checkUser()" style="appearance: none; display: none;">
+                                            <option selected disabled hidden>Choose Job Type</option>
+                                            <option value="Carpenter">Carpenter</option>
+                                            <option value="Electrician">Electrician</option>    
+                                            <option value="Mason">Mason</option>
+                                            <option value="Painter">Painter</option>
+                                            <option value="Plumber">Plumber</option>
+                                            <option value="Welder">Welder</option>
+                                            <option value="Labor Helper">Labor Helper</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="name-container">
+                                        <input type="text" class="name" name="name" placeholder="FirstName MI. LastName" oninput="checkName()" size="30" value="{{data1.name}}">
+                                        <span class="error name-error">
+                                            <i class="bx bx-error-circle error-icon" style="font-size: 25px"></i>
+                                        </span> <p class="error-text">This field is required</p>  
+                                    </div>
+
+                                    <div class="name-container">
+                                        <input type="text" class="email" name="email" placeholder="example@example.com" oninput="checkEmail()" size="30" value="{{data1.email}}">
+                                        <span class="error email-error">
+                                            <i class="bx bx-error-circle error-icon" style="font-size: 25px"></i>
+                                        </span> <p class="error-text">This field is required</p> 
+                                    </div>
+
+                                    <div class="name-container">
+                                        <input type="text" class="username" name="username" placeholder="Username" oninput="checkUsername()" size="30" value="{{data1.username}}">
+                                        <span class="error username-error">
+                                            <i class="bx bx-error-circle error-icon" style="font-size: 22px"></i> 
+                                    </div>
+
+                                    <div class="name-container">
+                                        <input type="password" class="password" id="password" name="password" placeholder="Password" oninput="checkPassword()" size="30" value="{{data1.password}}">
+                                        <span class="error password-error">
+                                            <i class="bx bx-error-circle error-icon" style="font-size: 22px"></i> <p class="error-text"></p>
+                                        </span><i class="bx bx-hide" id="hide1"></i><i class="bx bx-show" id="show1"></i><p class="error-text">This field is required</p>
+                                    </div>
+
+                                    <div class="name-container">
+                                        <input type="password" class="confPass" id="confPass" name="confPass" placeholder="Confirm Password" oninput="checkConfPass()" size="30" value="{{data1.confPass}}">
+                                        <span class="error confPass-error"> 
+                                            <i class="bx bx-error-circle error-icon" style="font-size: 22px"></i>
+                                        </span> <i class="bx bx-hide" id="hide2"></i><i class="bx bx-show" id="show2"></i><p class="error-text">This field is required</p>
+                                    </div>     
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next Step"/>
+                                </div>
+                                    <button type="button" id="next" class="next">Next</button>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form" id="form2">
+                                <div class="form-card">
+                                    <div class="name-container">
+                                         <div class="form-bday">
+                                            <h1 for="birthday" style="font-size: 12px; display: flex; font-weight: normal;">Birthday:</h1>
+                                            <input style="margin-top: 0px; text-align: center;" type="date" id="birthday" class="birthday" oninput="checkBDay()" name="birthday" max="2023-12-31" value="{{data1.birthday}}"> 
+                                        </div>
+                                    </div>  
+
+                                    <div class="name-container">
+                                       <div class="form-gender">
+                                        <h1 style="font-size: 12px; font-weight: normal;">Gender</h1> 
+                                        <div class="form-check">
+
+                                        <input class="form-check-input" type="radio" id="Male" class="gender" oninput="checkGender()" name="gender" value="Male" style="width:15%">
+                                        <label class="form-check-label" for="Male">
+                                            Male
+                                        </label>
+                                        </div>
+                                        <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="Female" class="gender" oninput="checkGender()" name="gender" value="Female" style="width:15%">
+                                        <label class="form-check-label" for="Female">
+                                            Female
+                                        </label>
+                                        </div>
+                                    </div>
+                                    </div> 
+
+                                    <div class="name-container">
+                                        <input type="number" class="contactNumber" name="contactNumber" placeholder="Contact Number" oninput="checkContNum()" size="20"  maxlength = "11" value="{{data1.contactNumber}}"> 
+                                        <span class="error contactnumber-error" style="  color: #f40202; display: none;">
+                                            <i class="bx bx-error-circle error-icon"></i>
+                                        </span> <p class="error-text">This field is required</p>
+                                    </div>
+
+                                    
+                                    <div class="name-container" style="grid-template-columns: 14rem 0.5rem 0.1rem;">
+                                        <input type="text" class="address1" name="address1" placeholder="House number & lot number" oninput="checkAdd1()" size="35" value="{{data1.address1}}">
+                                        <span class="error address1-error" style="  color: #f40202; display: none;">
+                                            <i class="bx bx-error-circle error-icon"></i>
+                                        </span> <p class="error-text">This field is required</p>
+                                    </div>
+                                    
+                                    <div class="name-container">
+                                        <input type="text" class="address2" name="address2" placeholder="Barangay" oninput="checkAdd2()" size="35" value="{{data1.address2}}" style="width: 49.4%">
+                                        <span class="error address2-error" style="  color: #f40202; display: none;">
+                                            <i class="bx bx-error-circle error-icon"></i>
+                                        </span> <p class="error-text">This field is required</p>
+                                    </div>
+                                 
+
+
+                                    <div class="name-container">
+                                        <input type="text" class="address3" name="address3" placeholder="City" oninput="checkAdd3()" size="35" value="{{data1.address3}}" style="width: 49.4%">
+                                        <span class="error address3-error" style="  color: #f40202; display: none;">
+                                            <i class="bx bx-error-circle error-icon"></i>
+                                        </span> <p class="error-text">This field is required</p>
+                                    </div>
+
+                                    <div class="name-container">
+                                        <input type="text" class="address4" name="address4" placeholder="Province" oninput="checkAdd4()" size="35" value="{{data1.address4}}" style="width: 49.4%">
+                                        <span class="error address4-error" style="  color: #f40202; display: none;">
+                                            <i class="bx bx-error-circle error-icon"></i>
+                                        </span> <p class="error-text">This field is required</p>
+                                    </div>
+
+                                    <div class="name-container">
+                                        <input type="number" class="zipcode" name="zipcode" placeholder="Zip Code" oninput="checkZip()" size="4" maxlength="4" value="{{data1.zipcode}}" style="width: 49.4%" >
+                                        <span class="error zipcode-error" style="  color: #f40202; display: none;">
+                                            <i class="bx bx-error-circle error-icon"></i>
+                                        </span> <p class="error-text">This field is required</p>
+                                    </div>         
+                                </div>
+                                </div>
+                                
+                                <button type="button" id="previous" class="previous action-button-previous" value="Previous">Back</button>
+                                <button type="button" id="next1" class="next1">Next</button>
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title">Personal Information</h2>
-                                    <input type="text" name="fname" placeholder="First Name"/>
-                                    <input type="text" name="lname" placeholder="Last Name"/>
-                                    <input type="text" name="phno" placeholder="Contact No."/>
-                                    <input type="text" name="phno_2" placeholder="Alternate Contact No."/>
+                                    <h2 class="fs-title">Upload</h2>
+                                    <label for="images"> Picture </label>
+                                        <input type="file" name="images" > <br><br>
+                                    <label for="image"> Resume </label>
+                                        <input type="file" name="image" > <br><br>
                                 </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                                <input type="button" name="next" class="next action-button" value="Next Step"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Payment Information</h2>
-                                    <div class="radio-group">
-                                        <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
-                                        <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div>
-                                        <br>
-                                    </div>
-                                    <label class="pay">Card Holder Name*</label>
-                                    <input type="text" name="holdername" placeholder=""/>
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <label class="pay">Card Number*</label>
-                                            <input type="text" name="cardno" placeholder=""/>
-                                        </div>
-                                        <div class="col-3">
-                                            <label class="pay">CVC*</label>
-                                            <input type="password" name="cvcpwd" placeholder="***"/>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label class="pay">Expiry Date*</label>
-                                        </div>
-                                        <div class="col-9">
-                                            <select class="list-dt" id="month" name="expmonth">
-                                                <option selected>Month</option>
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                                <option>April</option>
-                                                <option>May</option>
-                                                <option>June</option>
-                                                <option>July</option>
-                                                <option>August</option>
-                                                <option>September</option>
-                                                <option>October</option>
-                                                <option>November</option>
-                                                <option>December</option>
-                                            </select>
-                                            <select class="list-dt" id="year" name="expyear">
-                                                <option selected>Year</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                                <input type="button" name="make_payment" class="next action-button" value="Confirm"/>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title text-center">Success !</h2>
-                                    <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-3">
-                                            <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image">
-                                        </div>
-                                    </div>
-                                    <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5>You Have Successfully Signed Up</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
+                                <button type="button" id="previous1" class="previous1 action-button-previous" value="Previous">Back</button>
+                                <button type="button" id="next2" class="next2">Next</button>
                         </form>
-                    </div>
-                </div>
-            </div>
+                            </fieldset>
         </div>
     </div>
 </div>

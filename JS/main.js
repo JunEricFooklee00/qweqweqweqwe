@@ -13,6 +13,7 @@ const cookieParser = require("cookie-parser")
 const bcrypt = require('bcrypt')
 const { spawn } = require('child_process')
 const { MongoClient } = require('mongodb');
+const argon2 = require('argon2');
 
 app.use(express.static("HTML"))
 app.use(express.static("."))
@@ -26,8 +27,8 @@ app.get("/Sample", (req,res) => {
     res.render("LOCALS/Sample")
 })
 
-
-app.get("/Signupexample", authenticateToken,(req,res) => {
+app.get("/ClientSettings", authenticateToken, (req,res) => {
+    res.render("LOCALS/ClientInterfaces/ClientSettings")
     const user = req.user.user;
     const userId = req.user._id;
     console.log(user);
@@ -39,30 +40,75 @@ app.get("/Signupexample", authenticateToken,(req,res) => {
                   console.error(err);
                   res.status(500).send('Internal Server Error');
                 } else {
-                    res.render('LOCALS/Signupexample', {user})
+                    res.render('LOCALS/ClientInterfaces/ClientSettings', {user})
                 }
               });
-            // mongodb.getClient.findById(userId,(err, user) => {
-            //     if(!err){
-            //         res.render('LOCALS/Signupexample', {user})
-            //     }
-            // })
             }
-        else{
-            const sUser = mongodb.getEmployees.findById(userId, (err, user) => {
+}catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, error: "Server Error" });
+}
+})
+
+app.get("/EmployeeSettings", authenticateToken, (req,res) => {
+    const user = req.user.user;
+    const userId = req.user._id;
+    console.log(user);
+
+    try {
+        if(user == "Employee"){
+             mongodb.getEmployees.findById(userId, (err, user) => {
                 if (err) {
                   console.error(err);
                   res.status(500).send('Internal Server Error');
                 } else {
-                    res.render('LOCALS/Signupexample', {user})
+                    res.render('LOCALS/EmployeeInterfaces/EmployeeSettings', {user})
                 }
               });
             }
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ success: false, error: "Server Error" });
-    }
+}catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, error: "Server Error" });
+}
 })
+
+
+// app.get("/Signupexample", authenticateToken,(req,res) => {
+//     const user = req.user.user;
+//     const userId = req.user._id;
+//     console.log(user);
+
+//     try {
+//         if(user == "Client"){
+//              mongodb.getClients.findById(userId, (err, user) => {
+//                 if (err) {
+//                   console.error(err);
+//                   res.status(500).send('Internal Server Error');
+//                 } else {
+//                     res.render('LOCALS/Signupexample', {user})
+//                 }
+//               });
+//             // mongodb.getClient.findById(userId,(err, user) => {
+//             //     if(!err){
+//             //         res.render('LOCALS/Signupexample', {user})
+//             //     }
+//             // })
+//             }
+//         else{
+//             const sUser = mongodb.getEmployees.findById(userId, (err, user) => {
+//                 if (err) {
+//                   console.error(err);
+//                   res.status(500).send('Internal Server Error');
+//                 } else {
+//                     res.render('LOCALS/Signupexample', {user})
+//                 }
+//               });
+//             }
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ success: false, error: "Server Error" });
+//     }
+// })
 
 app.get("/AdminCalendar", (req,res) => {
     res.render("LOCALS/AdminInterfaces/AdminCalendar")
@@ -183,30 +229,55 @@ app.post("/JobOrder", authenticateToken, (req,res) => {
     }
 })
 
-// app.post("/Signupexample", authenticateToken, async (req, res) => {
-//     const decoded = req.user; // assuming req.user contains the decoded JWT token
-//     const userId = decoded.userId;
-//     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-//     const user = await getUser(userId);
-//     if (!user) {
-//       res.status(404).json({success:false, error: "User not found"});
-//       return;
-//     }
-//     user.updateOne({ _id: userId }, {
-//       $set: {
-//         password: hashedPassword,
-//         name: req.body.name,
-//         contactNumber: req.body.contactNumber
-//       }
-//     }, function(err, result) {
-//       if(!err){
-//         res.json({success:true});
-//       } else {
-//         console.error(err);
-//         res.status(500).json({success:false, error: "Error updating user"});
-//       }
-//     });
-//   });
+app.post("/ClientSettings", authenticateToken, async (req, res) => {
+    const decoded = req.user; // assuming req.user contains the decoded JWT token
+    const userId = decoded.userId;
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const user = await getUser(userId);
+    if (!user) {
+      res.status(404).json({success:false, error: "User not found"});
+      return;
+    }
+    user.updateOne({ _id: userId }, {
+      $set: {
+        password: hashedPassword,
+        name: req.body.name,
+        contactNumber: req.body.contactNumber
+      }
+    }, function(err, result) {
+      if(!err){
+        res.render("LOCALS/ClientInterfaces/ClientInterface")
+      } else {
+        console.error(err);
+        res.status(500).json({success:false, error: "Error updating user"});
+      }
+    });
+  });
+
+  app.post("/EmployeeSettings", authenticateToken, async (req, res) => {
+    const decoded = req.user; // assuming req.user contains the decoded JWT token
+    const userId = decoded.userId;
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const user = await getUser(userId);
+    if (!user) {
+      res.status(404).json({success:false, error: "User not found"});
+      return;
+    }
+    user.updateOne({ _id: userId }, {
+      $set: {
+        password: hashedPassword,
+        name: req.body.name,
+        contactNumber: req.body.contactNumber
+      }
+    }, function(err, result) {
+      if(!err){
+        res.render("LOCALS/EmployeeInterfaces/EmployeeInterface")
+      } else {
+        console.error(err);
+        res.status(500).json({success:false, error: "Error updating user"});
+      }
+    });
+  });
 
 
 

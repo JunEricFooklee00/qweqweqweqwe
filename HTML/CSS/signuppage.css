@@ -323,7 +323,7 @@
   }
   
   body{
-    background-image: url("HomePageBG.png");
+    background-image: url("Background1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -345,13 +345,13 @@
   .previous,
   .previous1,
   .Submit{
-    color: #0b243c;
+    color: #ffffff;
     font-weight: bolder;
     text-transform: uppercase;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     transition: 0.4s;
     letter-spacing: 1px;
-    background: #079ef6;
+    background: #75759e;
     padding: 10px 34px;
     border-radius: 30px;
     text-align: center;
@@ -371,7 +371,7 @@
   .previous1:hover,
   .Submit:hover{
     color: #fff;
-    background-color: #0887c6;
+    background-color: #202072;
     cursor: pointer;
   }
    
@@ -405,7 +405,7 @@
   .previous:hover:before,
   .previous1:hover:before,
   .Submit:hover:before{
-    left:95%;
+    left:100%;
   }
   /* End of button */
   
@@ -512,6 +512,12 @@
 
   }
   
+  input[type="radio"]:checked,
+input[type="radio"]:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: none;
+}
   
   
   

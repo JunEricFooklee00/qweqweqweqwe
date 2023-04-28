@@ -6,16 +6,23 @@
 }
 
 body{
-  background-image: url("HomePageBG.png");
+  background-image: url("Background1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 } */
 
-.navbar{
-  opacity: 0.1;
+.bg-body-tertiary {
+  --bs-bg-opacity: 1;
+  background-color: #04379f;
 }
+
+
+/* .navbar{
+  opacity: 0.1;
+  background-color: #04379f
+} */
 
 /* .body h1{
   display: flex;
@@ -130,13 +137,13 @@ h1 span {
 .container-fluid div button, 
 .modal-body button,
 .btn{
-  color: #0b243c;
+  color: #ffffff;
   font-weight: bolder;
   text-transform: uppercase;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   transition: 0.4s;
   letter-spacing: 1px;
-  background: #079ef6;
+  background: #75759e;
   padding: 10px 34px;
   border-radius: 30px;
   text-align: center;
@@ -150,7 +157,7 @@ h1 span {
 .modal-body button:hover,
 .btn:hover{
   color: #fff;
-  background-color: #0887c6;
+  background-color: #202072;
   cursor: pointer;
 }
  
@@ -172,7 +179,7 @@ h1 span {
 .container-fluid div button:hover:before,
 .modal-body button:hover:before,
 .btn:hover:before{
-  left:95%;
+  left:100%;
 }
 /* End of button */
 

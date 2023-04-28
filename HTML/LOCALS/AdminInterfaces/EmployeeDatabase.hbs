@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="col-sm-9 col-xs-12 text-right">
                                             <div class="btn_group">
-                                                <input type="text" class="form-control" placeholder="Search">
+                                                <input type="text" class="searchTable" placeholder="Search">
                                             </div>
                                         </div>
                                     </div>
@@ -103,8 +103,10 @@
                                                 <td> <img src = "{{this.avatar}}" style="width: 150px; height: 150px;"> </td>
                                                 <td> <img src = "{{this.resume}}" style="width: 150px; height: 150px;"> </td>
                                                 <td> 
-                                                    <button> <a href="accept/{{this._id}}/Employee" id="decision"> Accept </a> </button>
-                                                    <button> <a href="delete/{{this._id}}/Employee" id="decision"> Decline </a> </button>
+                                                   <ul class="action-list">
+                                                        <li><a href="accept/{{this._id}}/Client" data-tip="accept"><i class="fa fa-edit"></i></a></li>
+                                                        <li><a href="delete/{{this._id}}/Client" data-tip="delete"><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
                                                 </td>
                                             </tr>
                                             {{/each}}
@@ -118,6 +120,7 @@
             </div> 
         </main>
         <script src="/JS/sidebar.js"></script>
+        <script src="/JS/DBsearch.js"></script>
         {{!-- <script src="/JS/example.js"></script> --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </body>

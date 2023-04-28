@@ -6,7 +6,7 @@
 }
 
 body{
-    background-image: url("HomePageBG.png");
+    background-image: url("Background1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -76,13 +76,13 @@ form #error{
 
 /* Button */
 .container-md button{
-  color: #0b243c;
+  color: #ffffff;
   font-weight: bolder;
   text-transform: uppercase;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   transition: 0.4s;
   letter-spacing: 1px;
-  background: #079ef6;
+  background: #75759e;
   padding: 10px 34px;
   border-radius: 30px;
   text-align: center;
@@ -94,7 +94,7 @@ form #error{
 
 .container-md button:hover{
   color: #fff;
-  background-color: #0887c6;
+  background-color: #202072;
   cursor: pointer;
 }
 
@@ -112,7 +112,7 @@ form #error{
 }
 
 .container-md button:hover:before{
-  left:95%;
+  left:100%;
 }
 
 .container-md .submitButton{

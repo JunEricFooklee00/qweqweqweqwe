@@ -46,27 +46,22 @@
     </div>
   </nav>
     <body>
-        
-        <!-- MultiStep Form -->
-      
-    
-        <!-- MultiStep Form -->
-<div class="container-fluid" id="grad1">
- <div class="row justify-content-center mt-0">
-     <div class="col-md-6 mx-auto">
-        <div class="col-11 col-sm-5 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2 mx-auto">
+    <main>
+<!-- MultiStep Form -->
+<div class="container-fluid">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2 mx-auto" style="width: auto;">
             <form id="overall" action="/signuppage" method="post" enctype="multipart/form-data">
-            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2><strong>Sign Up Your User Account</strong></h2>
                 <p>Fill all form field to go to next step</p>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform">
                             <!-- progressbar -->
                             <ul id="progressbar">
-                               <li class="active" id="account"><strong>Account</strong></li>
+                                <li class="active" id="account"><strong>Account</strong></li>
                                 <li id="personal"><strong>Personal</strong></li>
-                                <li id="payment"><strong>Payment</strong></li>
+                                <li id="payment"><strong>Documents</strong></li>
                                 <li id="confirm"><strong>Finish</strong></li>
                             </ul>
                             <!-- fieldsets -->
@@ -132,7 +127,7 @@
                                     <button type="button" id="next" class="next">Next</button>
                             </fieldset>
                             <fieldset>
-                                <div class="form" id="form2">
+                                 <div class="form" id="form2">
                                 <div class="form-card">
                                     <div class="name-container">
                                          <div class="form-bday">
@@ -176,7 +171,7 @@
                                     </div>
                                     
                                     <div class="name-container">
-                                        <input type="text" class="address2" name="address2" placeholder="Barangay" oninput="checkAdd2()" size="35" value="{{data1.address2}}" style="width: 49.4%">
+                                        <input type="text" class="address2" name="address2" placeholder="Barangay" oninput="checkAdd2()" size="35" value="{{data1.address2}}">
                                         <span class="error address2-error" style="  color: #f40202; display: none;">
                                             <i class="bx bx-error-circle error-icon"></i>
                                         </span> <p class="error-text">This field is required</p>
@@ -185,21 +180,21 @@
 
 
                                     <div class="name-container">
-                                        <input type="text" class="address3" name="address3" placeholder="City" oninput="checkAdd3()" size="35" value="{{data1.address3}}" style="width: 49.4%">
+                                        <input type="text" class="address3" name="address3" placeholder="City" oninput="checkAdd3()" size="35" value="{{data1.address3}}">
                                         <span class="error address3-error" style="  color: #f40202; display: none;">
                                             <i class="bx bx-error-circle error-icon"></i>
                                         </span> <p class="error-text">This field is required</p>
                                     </div>
 
                                     <div class="name-container">
-                                        <input type="text" class="address4" name="address4" placeholder="Province" oninput="checkAdd4()" size="35" value="{{data1.address4}}" style="width: 49.4%">
+                                        <input type="text" class="address4" name="address4" placeholder="Province" oninput="checkAdd4()" size="35" value="{{data1.address4}}">
                                         <span class="error address4-error" style="  color: #f40202; display: none;">
                                             <i class="bx bx-error-circle error-icon"></i>
                                         </span> <p class="error-text">This field is required</p>
                                     </div>
 
                                     <div class="name-container">
-                                        <input type="number" class="zipcode" name="zipcode" placeholder="Zip Code" oninput="checkZip()" size="4" maxlength="4" value="{{data1.zipcode}}" style="width: 49.4%" >
+                                        <input type="number" class="zipcode" name="zipcode" placeholder="Zip Code" oninput="checkZip()" size="4" maxlength="4" value="{{data1.zipcode}}" >
                                         <span class="error zipcode-error" style="  color: #f40202; display: none;">
                                             <i class="bx bx-error-circle error-icon"></i>
                                         </span> <p class="error-text">This field is required</p>
@@ -211,6 +206,7 @@
                                 <button type="button" id="next1" class="next1">Next</button>
                             </fieldset>
                             <fieldset>
+                                <div class="form" id="form3">
                                 <div class="form-card">
                                     <h2 class="fs-title">Upload</h2>
                                     <label for="images"> Picture </label>
@@ -218,12 +214,12 @@
                                     <label for="image"> Resume </label>
                                         <input type="file" name="image" > <br><br>
                                 </div>
+                                </div>
                                 <button type="button" id="previous1" class="previous1 action-button-previous" value="Previous">Back</button>
                                 <button type="button" id="next2" class="next2">Next</button>
-                        </form>
                             </fieldset>
                             <fieldset>
-                                <div class="form-card">
+                                   <div class="form-card">
                                     <h2 class="fs-title text-center">Success !</h2>
                                     <br><br>
                                     <div class="row justify-content-center">
@@ -232,21 +228,27 @@
                                         </div>
                                     </div>
                                     <br><br>
+                                     <form id="form4">
                                     <div class="row justify-content-center">
                                         <div class="col-7 text-center">
                                             <h5>You Have Successfully Signed Up</h5>
                                         </div>
                                         <button class="Submit" type="submit">Submit</button>
                                     </div>
+                                    </form>
                                 </div>
                             </fieldset>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>   
+            </form>
+        
+        </div>
     </div>
 </div>
+    
+    </main>
+        
         <script src="/JS/signuppage.js"></script>
         {{!-- <script src="/JS/example.js"></script> --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
