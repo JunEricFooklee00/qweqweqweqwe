@@ -1,0 +1,518 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  
+  #form1 .bx-show{
+    font-size: 20px;
+    color: #000;
+    display: none;
+    cursor: pointer;
+    transform: translateY(21%);
+  }
+  
+  #form1 .bx-hide{
+    transform: translateY(21%);
+      font-size: 20px;
+      color: #919191;
+      cursor: pointer;
+  }
+  
+  #form1 .error{
+    font-size: 20px;
+    color: #f40202;
+    display: none;
+  }
+  
+  #form2 .error{
+    font-size: 20px;
+    color: #f40202;
+    display: none;
+  }
+  
+  
+  /*Background color*/
+  /* #grad1 {
+    background-color:#9C27B0;
+    background-image: linear-gradient(120deg, #FF4081, #81D4FA);
+  } */
+  
+  /*form styles*/
+  #overall {
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  #overall fieldset .form-card {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px 40px 30px 40px;
+    box-sizing: border-box;
+    width: 94%;
+    margin: 0 3% 20px 3%;
+  
+    /*stacking fieldsets above each other*/
+    position: relative;
+  }
+  
+  #overall fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+  
+    /*stacking fieldsets above each other*/
+    position: relative;
+  }
+  
+  /*Hide all except first fieldset*/
+  #overall fieldset:not(:first-of-type) {
+    display: none;
+  }
+  
+  .form-usertype,
+  .form-jobtype{
+    appearance: none;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  #user,
+  #job{
+    text-align: center;
+    padding: 10px 5px;
+    color: #333333;
+    background-color: #ffffff;
+    border: 2px solid #0000001a;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  #user:focus, 
+  #user:hover,
+  #job:focus, 
+  #job:hover,
+  select{
+    appearance: none;
+    outline: none;
+    border: 2px solid #bbbbbb;
+  }
+  
+  #user option,
+  #job option{
+    appearance: none;
+    background-color: #0000001a;
+  }
+  
+  .name-container{
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    /* gap: 0rem; */
+    grid-template-columns: 13rem 2rem 0.1rem;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+    position: relative;
+  }
+  
+  #overall fieldset .form-card {
+    text-align: left;
+    color: #9E9E9E;
+  }
+  
+  #overall input, #overall textarea {
+    padding: 0px 8px 4px 8px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+  
+  #overall input:focus, #overall textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: none;
+    font-weight: bold;
+    border-bottom: 2px solid skyblue;
+    outline-width: 0;
+  }
+  
+  
+  /*Dropdown List Exp Date*/
+  select.list-dt {
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px 3px 5px;
+    margin: 2px;
+  }
+  
+  select.list-dt:focus {
+    border-bottom: 2px solid skyblue;
+  }
+  
+  /*The background card*/
+  .card {
+    z-index: 0;
+    border: none;
+    border-radius: 0.5rem;
+    position: relative;
+    width:21rem;
+  }
+  
+  /*FieldSet headings*/
+  .fs-title {
+    font-size: 25px;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  /*progressbar*/
+  #progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+  }
+  
+  #progressbar .active {
+    color: #000000;
+  }
+  
+    ul {
+    padding-left: 0rem;
+  }
+  
+  #progressbar li {
+    list-style-type: none;
+    font-size: 12px;
+    width: 25%;
+    float: left;
+    position: relative;
+  }
+  
+  /*Icons in the ProgressBar*/
+  #progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f007";
+  }
+  
+  #progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f015";
+  }
+  
+  #progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030";
+  }
+  
+  #progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+  }
+  
+  /*ProgressBar before any progress*/
+  #progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 18px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+  }
+  
+  /*ProgressBar connectors*/
+  #progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+  }
+  
+  /*Color number of the step and the connector before it*/
+  #progressbar li.active:before, #progressbar li.active:after {
+    background: skyblue;
+  }
+  
+  /*Imaged Radio Buttons*/
+  .radio-group {
+    position: relative;
+    margin-bottom: 25px;
+  }
+  
+  .radio {
+    display:inline-block;
+    width: 204;
+    height: 104;
+    border-radius: 0;
+    background: lightblue;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    cursor:pointer;
+    margin: 8px 2px; 
+  }
+  
+  .radio:hover {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .radio.selected {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  /*Fit image in bootstrap div*/
+  .fit-image{
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .form-gender {
+  
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-check {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .form-check-input {
+    margin-right: 5px;
+  }
+  
+  .error-text {
+    display: none;
+  }
+  
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  
+  body{
+    background-image: url("HomePageBG.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  } */
+  
+  .navbar{
+    opacity: 0.1;
+  }
+  
+  
+  /* Button */
+  .container-fluid div button, 
+  .modal-body button,
+  .btn,
+  .next,
+  .next1,
+  .next2,
+  .previous,
+  .previous1,
+  .Submit{
+    color: #0b243c;
+    font-weight: bolder;
+    text-transform: uppercase;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transition: 0.4s;
+    letter-spacing: 1px;
+    background: #079ef6;
+    padding: 10px 34px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid #fff;
+    cursor: pointer;
+    position:relative;
+    overflow:hidden;
+  }
+  
+  .container-fluid div button:hover,
+  .modal-body button:hover,
+  .btn:hover,
+  .next:hover,
+  .next1:hover,
+  .next2:hover,
+  .previous:hover,
+  .previous1:hover,
+  .Submit:hover{
+    color: #fff;
+    background-color: #0887c6;
+    cursor: pointer;
+  }
+   
+  .container-fluid div button:before,
+  .modal-body button:before,
+  .btn:before,
+  .next:before,
+  .next1:before,
+  .next2:before,
+  .previous:before,
+  .previous1:before,
+  .Submit:before{
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background : #fff;
+    left: -55px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+  }
+    
+  .container-fluid div button:hover:before,
+  .modal-body button:hover:before,
+  .btn:hover:before,
+  .next:hover:before,
+  .next1:hover:before,
+  .next2:hover:before,
+  .previous:hover:before,
+  .previous1:hover:before,
+  .Submit:hover:before{
+    left:95%;
+  }
+  /* End of button */
+  
+  /* Modal */
+  .modal-dialog{
+    text-align: center;
+  }
+  /* end of modal */
+  
+   body {
+        font-size: 16px;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .col {
+        flex: 1;
+        margin: 0 10px;
+        background-color: #ccc;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+   /* media query for screen sizes between 820px and 912px */
+   /* @media only screen and (min-width: 820px) and (max-width: 912px) {
+    body {
+      font-size: 14px;
+    }
+    .container {
+      width: 90%;
+    }
+    .col {
+      flex-basis: calc(50% - 20px);
+    }
+  } */
+  
+  /* media query for screen sizes between 912px and 1368px */
+  /* @media only screen and (min-width: 912px) and (max-width: 1368px) {
+    body {
+      font-size: 14px;
+    }
+    .container {
+      width: 90%;
+    }
+    .col {
+      flex-basis: calc(33.33% - 20px);
+    }
+  } */
+
+
+  .form-card {
+    box-sizing: border-box;
+  }
+  
+  .username {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .error-icon {
+    transform: translateY(-96%);
+    position: absolute;
+    top: 50%;
+  }
+  
+  .error-text {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    font-size: 12px;
+    color: #ff0000;
+    display: none;
+  }
+  
+  .error {
+    display: none;
+  }
+  
+  .error.show {
+    display: inline-block;
+  }
+  
+  .username:focus ~ .error-text,
+  .username:not(:placeholder-shown) ~ .error-text {
+    display: block;
+  }
+  
+
+  #card{
+    display: none;
+  }
+  
+  .container {
+    width: 200%;
+
+  }
+  
+  
+  
+  
+  

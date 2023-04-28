@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>EMS</title>
+        {{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> --}}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+        <link rel="shortcut icon" href="../CSS/hehe.png">
+        <link rel="stylesheet" href="../CSS/JobOrder.css">
+    </head>
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle">JobOrder</i> </div>
+        <div class="d-flex justify-content-center" style="font-size: 1.4rem;font-weight: bold; color: #4723D9; margin-right: 100px;"></div>
+        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+              <a href="#" class="nav_logo"> 
+                <i><img src="../CSS/emslogo.gif" style="height:40px"></i> 
+                <span class="nav_logo-name" style="font-size: 1.4rem;font-weight: bold;font-family: poppins, sans-serif;" >EMS</span> 
+              </a>
+              <hr>
+              <div class="nav_list" style="font-size: 18px;"> 
+                <a href="/ClientInterface" class="nav_link">
+                  <i class='bx bx-grid-alt nav_icon' style="font-size: 25px;"></i> 
+                  <span class="nav_name" style="font-size: 17px;font-weight: bold;font-family: poppins, sans-serif;">Dashboard</span> 
+                </a> 
+                <a href="/JobOrder" class="nav_link active"> 
+                  <i class='bx bx-briefcase' style="font-size: 25px;"></i>
+                  <span class="nav_name" style="font-size: 17px;font-weight: bold;font-family: poppins, sans-serif;">Jobs Order</span> 
+                </a> 
+                <a href="/Schedule" class="nav_link"> 
+                  <i class='bx bx-calendar' style="font-size: 25px;"></i> 
+                  <span class="nav_name" style="font-size: 17px;font-weight: bold;font-family: poppins, sans-serif;">Schedule</span> 
+                </a> 
+                <a href="#" class="nav_link"> 
+                  <i class='bx bx-cog' style="font-size: 25px;"></i>
+                  <span class="nav_name" style="font-size: 17px;font-weight: bold;font-family: poppins, sans-serif;">Settings</span> 
+                </a> 
+              </div>
+            </div> 
+            <a href="#" onclick="logoutSubmit()" class="nav_link"> 
+              <i class='bx bx-log-out nav_icon' style="font-size: 25px;"></i> 
+              <span class="nav_name" style="font-size: 17px;font-weight: bold;font-family: poppins, sans-serif;">Log Out</span> 
+            </a>
+        </nav>
+    </div>
+        <!--Container Main start-->
+        <main>
+        <div class="main-body">
+            <div class="plus-button">  
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalJO" style="background-color: transparent;">
+                <span class="material-symbols-sharp" style="font-size: 30px; color: #7380ec;">add_circle</span>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalJO" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Job Form</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="form" action="/JobOrder" method="post">
+                        <div class="modal-body">
+                            <div class="input-group mb-2">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Project Name</span>
+                              <input type="text" name="projectName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">Name</span>
+                                <input type="text" name="fname" aria-label="First name" class="form-control" placeholder="First Name">
+                                <input type="text" name="lname" aria-label="Last name" class="form-control" placeholder="Last Name">
+                            </div>
+                            <div class="input-group mb-2">
+                                <label class="input-group-text" for="inputGroupSelect01">Type of Work</label>
+                                <select name="TypeOfWork" class="form-select" id="inputGroupSelect01">
+                                    <optgroup label="Site Preparation">
+                                        <option selected disabled hidden>Choose Type of Work</option>
+                                        <option id-data="Site Preparation" value="Filling and backfilling works">Filling and backfilling works</option>
+                                        <option id-data="Site Preparation" value="Excavation of soil and/or Footing Excavation">Excavation of soil and/or Footing Excavation</option>
+                                        <option id-data="Site Preparation" value="Gravel bedding">Gravel bedding</option>  
+                                        <option id-data="Site Preparation" value="Chipping of slab">Chipping of slab</option>
+                                        <option id-data="Site Preparation" value="Chipping of existing tiles">Chipping of existing tiles</option>
+                                        <option id-data="Site Preparation" value="Chipping of existing slab for ducting">Chipping of existing slab for ducting</option>
+                                        <option id-data="Site Preparation" value="Demolish existing ceiling and wood truss">Demolish existing ceiling and wood truss</option>
+                                        <option id-data="Site Preparation" value="Demolish existing accordion door">Demolish existing accordion door</option>
+                                        <option id-data="Site Preparation" value="Demolish front wall">Demolish front wall </option>
+                                        <option id-data="Site Preparation" value="Demolish existing staircase/stairway">Demolish existing staircase/stairway</option>
+                                        <option id-data="Site Preparation" value="Demolish existing grills">Demolish existing grills</option>
+                                        <option id-data="Site Preparation" value="Demolish dilapidated roofing">Demolish dilapidated roofing</option>
+                                        <option id-data="Site Preparation" value="Site Clearing/Hauling and Disposal works">Site Clearing/Hauling and Disposal works</option>
+                                    </optgroup>
+                                    <optgroup label="Carpentry Works">
+                                        <option id-data="Carpentry Works" value="B2 - Carpentry Works for Main Counter">Carpentry works for Main Counter (repair only)</option>
+                                        <option id-data="Carpentry Works" value="Carpentry works for Ceiling, Parapet, and Canopy">Carpentry works for Ceiling, Parapet, and Canopy</option>
+                                        <option id-data="Carpentry Works" value="Carpentry Works - Construction of Dry Wall (Interior Wall and Partition)">Construction of Dry Wall (Interior Wall and Partition)</option>
+                                        <option id-data="Carpentry Works" value="Carpentry Works - Construction of Exterior Wall using Rib type GI Sheet">Construction of Exterior Wall using Rib type GI Sheet</option>
+                                        <option id-data="Carpentry Works" value="Carpentry Works - Wall Cabinet and Shelves at Sink Area Installation">Wall Cabinet and Shelves at Sink Area Installation</option>
+                                    </optgroup>
+                                    <optgroup label="Mechanical/Metal Works">
+                                        <option id-data="Mechanical/Metal Works" value="C1 - Stainless works for Main Counter">Stainless works for Main Counter (Repair only)</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - Welding works for Steel frame of Main Counter">Welding works for Steel frame of Main Counter</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - Fabrication of Steel Gate">Fabrication of Steel Gate</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - Fabrication of Steel columns and members">Fabrication of Steel columns and members</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - 40cmx30cm steel louvers installation">40cmx30cm steel louvers installation</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - Installation of exhaust fans">Installation of exhaust fans</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - Fabrication and Installation of metal roll up door">Fabrication and Installation of metal roll up door</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - Menu Board Hooking and Installation">Menu Board Hooking and Installation</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - Steel ramp fabrication">Steel ramp fabrication</option>
+                                        <option id-data="Mechanical/Metal Works" value="Mechanical/Metal Works - LPG Cage Fabrication">LPG Cage Fabrication</option>
+                                    </optgroup>
+                                    <optgroup label="Electrical Works">
+                                        <option id-data="Electrical Works" value="Electrical Works - Main Line and Wiring Distribution System">Main Line and Wiring Distribution System</option>
+                                        <option id-data="Electrical Works" value="Electrical Works - Interior and Exterior Lightings">Interior and Exterior Lightings</option>
+                                    </optgroup>
+                                    <optgroup label="Painting Works">
+                                        <option id-data="Painting Works" value="G1 - Plain Concrete Surfaces (Surface Prep - Primer - Finish Coat)">Plain Concrete Surfaces (Surface Prep - Primer - Finish Coat)</option>
+                                        <option id-data="Painting Works" value="G2 - Wooden_Metal Surfaces (Surface Prep - Primer - Finish Coat)">Wooden / Metal Surfaces (Surface Prep - Primer - Finish Coat)</option>
+                                    </optgroup>
+                                    <optgroup label="Plumbing Works">
+                                        <option id-data="Plumbing Works" value="D2 - Pipeline and Fixture Installation">Pipeline and Fixture Installation</option>
+                                        <option id-data="Plumbing Works" value="D3 - Drainage Pipeline Installation">Drainage Pipeline Installation</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Area</span>
+                                <input type="number" name="Area" placeholder="Area" class="form-control">
+                                <span id="Symbol" class="input-group-text">$</span>
+                                <span id="Prefix" class="input-group-text">0.00</span>
+                            </div>
+                            <div class="inputArea"></div> <input type="hidden" name="Unit" class="Unit">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Location</span>
+                                <input type="text" name="Location" placeholder="House# Street, Barangay, City" size="60" class="form-control">
+                            </div>
+                            <div class="input-group mb-2">
+                              <span class="input-group-text" id="inputGroup-sizing-default">Starting Date</span>
+                                <input type="date" name="StartingDate" placeholder="Days" class="form-control">
+                            </div>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Days Expected to Finish</span>
+                                <input type="number" name="ExpectedFinishDate" placeholder="Days" class="form-control">
+                                <span class="input-group-text">Day/s</span>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="job-list-container">
+            <div class="insights" id="jobs-container"></div>
+        </div>
+    </main>
+        <div class="right">
+            <div class="top">
+            <button id="menu btn">
+                <span class="material-symbols-sharp">menu</span>
+            </button>
+            </div>
+            <div class="data-container hidden">
+            <h2>Entry Data</h2>
+            <div class="data-container1">
+                <div class="data-container2">
+                <div class="entry-data-container">
+                    <div class="message">
+                    <div class="info-table-container" id="info-table-container">
+                        <table id="info-table">
+                        <tbody></tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFR">
+                        Forecast/Recommend
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalFR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Recommend</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>    
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>     
+        <!--Container Main end-->
+        <script src="/JS/sidebar.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/JS/JobOrder.js"></script>
+    </body>
+</html>
